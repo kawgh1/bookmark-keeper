@@ -5,6 +5,7 @@ const bookmarkForm = document.getElementById('bookmark-form');
 const websiteNameEl = document.getElementById('website-name');
 const websiteUrlEl = document.getElementById('website-url');
 const bookmarksContainer = document.getElementById('bookmarks-container');
+const button = document.getElementById('button');
 
 //
 let bookmarks = [];
@@ -18,8 +19,10 @@ function showModal() {
 
 // Modal Event Listeners
 modalShow.addEventListener('click', showModal);
-
+// if click anywhere else on screen, close modal
 modalClose.addEventListener('click', () => modal.classList.remove('show-modal'));
+// close modal on submit
+button.addEventListener('click', () => modal.classList.remove('show-modal'));
 
 // Validate Form
 function validate(nameValue, urlValue) {
@@ -162,8 +165,9 @@ function storeBookmark(e) {
 
     // fetch bookmarks
     fetchBookmarks();
-    bookmarkForm.reset();
-    websiteNameEl.focus();
+    // bookmarkForm.reset();
+    // websiteNameEl.focus();
+    bookmarkForm.close();
 }
 
 // Event Listener
